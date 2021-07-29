@@ -1,0 +1,106 @@
+
+$color1: #17202A;
+$text_color1: #fff;
+$accent_color: #4BA0EC;
+
+@function pxToEm($px, $from: 16) {
+    @return ($px / $from)+0em;
+}
+
+body {
+    background: $color1;
+    font-family: "Helvetica Neue";
+    color: $text_color1;
+}
+
+
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 280px 599px 377px;
+    margin: auto;
+    width: fit-content;
+}
+
+.wrapper>div {
+    outline: 2px solid red;
+}
+
+.logo {
+    text-decoration: none;
+    margin-left: 18px;
+}
+
+.sidemenu-nav {
+    display: flex;
+    flex-direction: column;
+    a {
+        font-size: 22px;
+        font-weight: 500;
+        color: inherit;
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        padding: 18px;
+        &:hover {
+            background: rgba(255, 255, 255, 0.425);
+        }
+    }
+}
+
+
+.sidemenu-nav {
+    .text {
+        margin-left: 21px;
+        font-size: 20px;
+    }
+}
+
+.tweet {
+    color: inherit;
+    font-size: pxToEm(15, 15);;
+    font-weight: 500;
+    text-decoration: none;
+    width: pxToEm(211, 15);;
+    display: inline-block;
+    margin: pxToEm(18, 15) 0 0 pxToEm(7, 15);
+    height: pxToEm(50, 15);;
+    text-align: center;
+    background-color: #4BA0EC;
+    line-height: pxToEm(50, 15);
+    vertical-align: middle;
+    border-radius: pxToEm(100, 15);
+}
+
+.profile-name {
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 900px) {
+    .tweet {
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .wrapper {
+        grid-template-columns: 58px 1fr;
+        width: 100%;
+    }
+
+    .sidemenu-nav {
+        .text {
+            display: none;
+        }
+    }
+
+    .tweet {
+        width: 45px;
+        height: 45px;
+        font-size: 12px;
+    }
+
+    .right-column {
+        display: none;
+    }
+}
