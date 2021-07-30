@@ -31,7 +31,7 @@ body {
     margin-left: 18px;
 }
 
-.sidemenu-nav {
+.left-sidemenu__nav {
     display: flex;
     flex-direction: column;
     a {
@@ -49,7 +49,7 @@ body {
 }
 
 
-.sidemenu-nav {
+.left-sidemenu__nav {
     .text {
         margin-left: 21px;
         font-size: 20px;
@@ -72,8 +72,71 @@ body {
     border-radius: pxToEm(100, 15);
 }
 
+.toggler {
+
+    display: flex;
+    justify-content: center;
+
+    width: 45px;
+    height: 45px;
+    margin-left: pxToEm(7);
+    svg {
+        width: 12px;
+        color: #fff;
+    }
+}
+
 .profile-name {
     font-size: 20px;
+}
+
+.search-box {
+    font-size: 16px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    $icon_space: 17;
+    $icon_width: 14.5;
+
+    &__field {
+        $field_bg: #283340;
+        background: $field_bg;
+        border: 0;
+        border-radius: pxToEm(100);
+        box-sizing: border-box;
+        color: $text_color1;
+        font-size: inherit;
+        padding-left: pxToEm($icon_space * 2 + $icon_width);
+        padding-right: pxToEm($icon_space);
+        height: pxToEm(40);
+        width: pxToEm(346);
+
+        &::placeholder {
+            color: #8A98A4;
+        }
+
+        &:focus {
+            outline: none;
+            &+svg {
+                stroke: $text_color1;
+            }
+
+        }
+
+        &:not([value=""]) {
+            background: rgba($field_bg, 0.8);
+            &+svg {
+                stroke: rgb(223, 79, 79);
+            }
+        }
+    }
+
+    &__icon {
+        stroke: #8A98A4;
+        position: absolute;
+        left: pxToEm($icon_space);
+    }
+
 }
 
 @media only screen and (max-width: 900px) {
@@ -84,13 +147,35 @@ body {
 
 @media only screen and (max-width: 700px) {
     .wrapper {
-        grid-template-columns: 58px 1fr;
+        grid-template-columns: 60px 1fr;
         width: 100%;
+
+        &--open {
+            grid-template-columns: 1fr;
+            padding-left: 60px;
+            
+        }
     }
 
-    .sidemenu-nav {
+    .left-sidemenu__nav {
         .text {
             display: none;
+        }
+    }
+
+    .left-sidemenu {
+        &__nav {
+            .text {
+                display: none;
+            }
+        }
+
+        &--open {
+            position: absolute;
+            left: 8px;
+            .text {
+                display: initial;
+            }
         }
     }
 
